@@ -22,22 +22,67 @@ class Menu extends Component {
 
     onDishSelect(dish) {
         this.setState({ selectedDish: dish });
+        
+        
     }
 
     renderDish(dish) {
         if (dish != null)
             return (
-                <Card>
-                    <CardImg top src={dish.image} alt={dish.name} />
-                    <CardBody>
-                        <CardTitle>{dish.name}</CardTitle>
-                        <CardText>{dish.description}</CardText>
-                    </CardBody>
-                </Card>
+                <div>
+                    <Card>
+                        <CardImg top src={dish.image} alt={dish.name} />
+                        <CardBody>
+                            <CardTitle>{dish.name}</CardTitle>
+                            <CardText>{dish.description}</CardText>
+                        </CardBody>
+                    </Card>
+                    
+                </div>
+                
+                
             );
         else
             return (
                 <div></div>
+            );
+    }
+
+    
+
+    renderDishInfo(dish) {
+        if (dish != null)
+            
+            
+            return (
+                
+                <div>
+                    <Card>
+                        <CardBody>
+                            <CardTitle>Comments</CardTitle>
+                            <CardText>{dish.comments[0].comment}</CardText>
+                            <CardText>--{dish.comments[0].author}, {dish.comments[0].date.substring(0,10)}</CardText>
+
+                            <CardText>{dish.comments[1].comment}</CardText>
+                            <CardText>--{dish.comments[1].author}, {dish.comments[1].date.substring(0, 10)}</CardText>
+
+                            <CardText>{dish.comments[2].comment}</CardText>
+                            <CardText>--{dish.comments[2].author}, {dish.comments[2].date.substring(0, 10)}</CardText>
+
+                            <CardText>{dish.comments[3].comment}</CardText>
+                            <CardText>--{dish.comments[3].author}, {dish.comments[3].date.substring(0, 10)}</CardText>
+
+                            <CardText>{dish.comments[4].comment}</CardText>
+                            <CardText>--{dish.comments[4].author}, {dish.comments[4].date.substring(0, 10)}</CardText>
+
+                        </CardBody>
+                    </Card>
+                </div>
+            );
+            
+        else
+            return (
+               <div></div>
             );
     }
 
@@ -64,6 +109,9 @@ class Menu extends Component {
                 <div className="row">
                     <div className="col-12 col-md-5 m-1">
                         {this.renderDish(this.state.selectedDish)}
+                    </div>
+                    <div className="col-12 col-md-5 m-1">
+                        {this.renderDishInfo(this.state.selectedDish)}
                     </div>
                 </div>
             </div>
